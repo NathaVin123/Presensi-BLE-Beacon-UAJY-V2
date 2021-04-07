@@ -4,8 +4,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
 using System.Threading.Tasks;
+using Presensi_BLE_Beacon_UAJY.API.Data;
 
 namespace Presensi_BLE_Beacon_UAJY.API
 {
@@ -13,8 +15,22 @@ namespace Presensi_BLE_Beacon_UAJY.API
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            //CreateHostBuilder(args).Build().Run();
+            var host = CreateHostBuilder(args).Build();
+            //RunSeeding(host);
+            host.Run();
         }
+
+        //private static void RunSeeding(IHost host)
+        //{
+        //    var scopeFactory = host.Services.GetService<IServiceScopeFactory>();
+        //    using (var scope = scopeFactory.CreateScope())
+        //    {
+        //        var seeder = scope.ServiceProvider.GetService<SeedDB>();
+        //        seeder.SeedAsync().Wait();
+        //    }
+
+        //}
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
