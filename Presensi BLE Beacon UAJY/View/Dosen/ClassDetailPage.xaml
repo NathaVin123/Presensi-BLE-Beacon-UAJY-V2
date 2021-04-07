@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Presensi_BLE_Beacon_UAJY.View.Dosen.ClassDetailPage"
+             
+             Title="Detail Kelas"
+             BackgroundColor="#185CA7">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Frame BackgroundColor="White"
+                       CornerRadius="19"
+                       Margin="12">
+                    <StackLayout>
+                        <Image WidthRequest="80"
+                               Aspect="AspectFit"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center">
+                            <Image.Source>
+                                <OnPlatform x:TypeArguments="FileImageSource">
+                                    <On Platform="iOS, Android" Value="School_Black.png" />
+                                    <On Platform="UWP" Value="Resources/School_Black.png" />
+                                </OnPlatform>
+                            </Image.Source>
+                        </Image>
+                        <Grid Padding="12,0,0,0">
+                            <Label Text="Jaringan Komputer A"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="Black"
+                                   FontSize="24"
+                                   FontAttributes="Bold" />
+                        </Grid>
+                        <Grid Padding="12,0,0,12">
+                            <Label Text="Pertemuan"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="Black"
+                                   FontSize="20"
+                                   FontAttributes="Bold" />
+                        </Grid>
+                        <Grid Padding="12,0,0,12">
+                            <Label Text="2"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="Black"
+                                   FontSize="20"
+                                   FontAttributes="None" />
+                        </Grid>
+                        <Grid Padding="12,0,0,12">
+                            <Label Text="Sesi"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="Black"
+                                   FontSize="20"
+                                   FontAttributes="Bold" />
+                        </Grid>
+                        <Grid Padding="12,0,0,12">
+                            <Label Text="3"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="Black"
+                                   FontSize="20"
+                                   FontAttributes="None" />
+                        </Grid>
+                        <Grid Padding="12,0,0,12">
+                            <Label Text="Ruangan"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="Black"
+                                   FontSize="20"
+                                   FontAttributes="Bold" />
+                        </Grid>
+                        <Grid Padding="12,0,0,12">
+                            <Label Text="R.3315"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="Black"
+                                   FontSize="20"
+                                   FontAttributes="None" />
+                        </Grid>
+                        <Grid Padding="12,0,0,12">
+                            <Label Text="Jam"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="Black"
+                                   FontSize="20"
+                                   FontAttributes="Bold" />
+                        </Grid>
+                        <Grid Padding="12,0,0,12">
+                            <Label Text="13.01"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="Black"
+                                   FontSize="20"
+                                   FontAttributes="None" />
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+                <StackLayout>
+                    <Grid Padding="12,-110,12,0">
+                        <Button BackgroundColor="#F5C800"
+                                TextColor="Black"
+                                Grid.Row="2"
+                                Text="Ganti Jadwal"
+                                CornerRadius="19"
+                                FontAttributes="Bold"
+                                HorizontalOptions="Center" />
+                    </Grid>
+                </StackLayout>
+                <StackLayout>
+                    <Grid Padding="12,-110,12,0">
+                        <Button BackgroundColor="Gray"
+                                TextColor="Black"
+                                Grid.Row="2"
+                                Text="Kehadiran"
+                                CornerRadius="19"
+                                FontAttributes="Bold"
+                                HorizontalOptions="Center" />
+                    </Grid>
+                </StackLayout>
+                <StackLayout>
+                    <Grid Padding="12,-110,12,0">
+                        <Button BackgroundColor="#F5C800"
+                                TextColor="Black"
+                                Grid.Row="2"
+                                Text="Presensi Masuk"
+                                CornerRadius="19"
+                                FontAttributes="Bold"
+                                HorizontalOptions="Center" />
+                    </Grid>
+                </StackLayout>
+                <StackLayout>
+                    <Grid Padding="12,-110,12,0">
+                        <Button BackgroundColor="Gray"
+                                TextColor="Black"
+                                Grid.Row="2"
+                                Text="Presensi Keluar"
+                                CornerRadius="19"
+                                FontAttributes="Bold"
+                                HorizontalOptions="Center" />
+                    </Grid>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

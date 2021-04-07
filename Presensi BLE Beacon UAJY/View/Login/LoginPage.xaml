@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+
+             x:Class="Presensi_BLE_Beacon_UAJY.View.Login.LoginPage"
+
+             NavigationPage.HasNavigationBar="false">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#185CA7">
+            <Grid Margin="16">
+                <Frame BackgroundColor="White"
+                       HeightRequest="135"
+                       CornerRadius="19">
+                    <Image WidthRequest="100"
+                           Aspect="AspectFit"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center">
+                        <Image.Source>
+                            <OnPlatform x:TypeArguments="FileImageSource">
+                                <On Platform="iOS, Android" Value="SplashPage_LogoAtmaJaya.png" />
+                                <On Platform="UWP" Value="Resources/SplashPage_LogoAtmaJaya.png" />
+                            </OnPlatform>
+                        </Image.Source>
+                    </Image>
+                </Frame>
+            </Grid>
+            <Grid Padding="16,0,16,16">
+                <Frame BackgroundColor="#F5C800"
+                       CornerRadius="19"
+                       WidthRequest="650">
+                    <Grid Padding="16">
+                        <StackLayout>
+                            <Label HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center"
+                                   Text="Login"
+                                   TextColor="Black"
+                                   FontAttributes="Bold"
+                                   FontSize="25" />
+                            <Picker x:Name="RolePicker"
+                                    Title="Mahasiswa/Dosen"
+                                    TitleColor="Gray"
+                                    FontSize="18">
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>Mahasiswa</x:String>
+                                        <x:String>Dosen</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+                            <Entry BackgroundColor="Transparent"
+                                   Text="{Binding Username}"
+                                   Placeholder="NPM / NPP"
+                                   PlaceholderColor="Gray"
+                                   Keyboard="Numeric" />
+                            <Entry BackgroundColor="Transparent"
+                                   Text="{Binding Password}"
+                                   Placeholder="Password"
+                                   PlaceholderColor="Gray"
+                                   IsPassword="True" />
+                            <Label Text="NPM / NPP / Password anda salah"
+                                   IsVisible="{Binding AreCredentialsInvalid}"
+                                   TextColor="Red" />
+                            <Grid Padding="5" />
+                            <Button BackgroundColor="#0099FF"
+                                    Grid.Row="2"
+                                    Text="Masuk"
+                                    CornerRadius="19"
+                                    Clicked="LoginToDashboard" />
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+            </Grid>
+            <Grid Padding="12,35,12,35">
+                <Frame BackgroundColor="White"
+                       CornerRadius="19">
+                    <Label Text="Ver 0.0"
+                           FontSize="14"
+                           TextColor="Black"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           FontAttributes="Bold" />
+                </Frame>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

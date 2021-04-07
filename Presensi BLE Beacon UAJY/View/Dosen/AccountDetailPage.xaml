@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Presensi_BLE_Beacon_UAJY.View.Dosen.AccountDetailPage"
+             Title="Akun">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout BackgroundColor="#185CA7"
+                         HorizontalOptions="FillAndExpand">
+                <Grid Padding="12">
+                    <Frame BackgroundColor="#42A2FB"
+                               HeightRequest="50"
+                               CornerRadius="19">
+                        <Label Text="Paulus MudjiHartono"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               TextColor="White" />
+                    </Frame>
+                </Grid>
+                <Grid Padding="12,0,12,12">
+                    <Frame BackgroundColor="White"
+                           CornerRadius="19">
+                        <StackLayout>
+                            <Label Text="Informasi Akun"
+                                   TextColor="Black"
+                                   FontSize="19"
+                                   FontAttributes="Bold"
+                                   HorizontalTextAlignment="Center" />
+                            <Label Text="Nama Lengkap : -"
+                                   TextColor="Black"
+                                   FontSize="15"
+                                   FontAttributes="Bold"
+                                   HorizontalTextAlignment="Start" />
+                            <Label Text="NPP : -"
+                                   TextColor="Black"
+                                   FontSize="15"
+                                   FontAttributes="Bold"
+                                   HorizontalTextAlignment="Start" />
+                            <Label Text="Tempat Lahir : -"
+                                   TextColor="Black"
+                                   FontSize="15"
+                                   FontAttributes="Bold"
+                                   HorizontalTextAlignment="Start" />
+                            <Label Text="Tanggal Lahir : -"
+                                   TextColor="Black"
+                                   FontSize="15"
+                                   FontAttributes="Bold"
+                                   HorizontalTextAlignment="Start" />
+                            <Label Text="Tanggal Lahir : -"
+                                   TextColor="Black"
+                                   FontSize="15"
+                                   FontAttributes="Bold"
+                                   HorizontalTextAlignment="Start" />
+                            <Label Text="Kontak : -"
+                                   TextColor="Black"
+                                   FontSize="15"
+                                   FontAttributes="Bold"
+                                   HorizontalTextAlignment="Start" />
+                            <Label Text="Dosen : Informatika"
+                                   TextColor="Black"
+                                   FontSize="15"
+                                   FontAttributes="Bold"
+                                   HorizontalTextAlignment="Start" />
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

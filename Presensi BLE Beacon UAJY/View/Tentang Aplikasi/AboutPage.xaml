@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Presensi_BLE_Beacon_UAJY.View.Tentang_Aplikasi.AboutPage"
+             
+             Title="Tentang Aplikasi">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#185CA7">
+            <Grid Margin="12">
+                <Frame BackgroundColor="White"
+                   CornerRadius="19">
+                    <StackLayout>
+                        <Image WidthRequest="100"
+                               Aspect="AspectFit"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center">
+                            <Image.Source>
+                                <OnPlatform x:TypeArguments="FileImageSource">
+                                    <On Platform="iOS, Android" Value="SplashPage_LogoAtmaJaya.png" />
+                                    <On Platform="UWP" Value="Resources/SplashPage_LogoAtmaJaya.png" />
+                                </OnPlatform>
+                            </Image.Source>
+                        </Image>
+                        <Label HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               Text="Sistem Presensi UAJY"
+                               TextColor="Black"
+                               FontAttributes="Bold"
+                               FontSize="25" />
+                        <Label HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               Text="Aplikasi Presensi Perkuliahan UAJY menggunakan BLE Beacon Berbasis Perangkat Mobile"
+                               TextColor="Black"
+                               FontAttributes="Bold"
+                               FontSize="18" />
+                    </StackLayout>
+                </Frame>
+            </Grid>
+            <Grid Padding="12,0,12,12">
+                <Label Text="Pengembang"
+                       HorizontalTextAlignment="Center"
+                       TextColor="White"
+                       FontSize="20"
+                       FontAttributes="Bold" />
+            </Grid>
+            <Grid Padding="12,0,12,12">
+                <Frame BackgroundColor="White"
+                       CornerRadius="19">
+                    <StackLayout>
+                        <Label Text="Nathaniel Vincent Wibowo"
+                               TextColor="Black"
+                               FontSize="19"
+                               FontAttributes="Bold"
+                               HorizontalTextAlignment="Center" />
+                        <Label Text="170709127"
+                               TextColor="Black"
+                               FontSize="19"
+                               FontAttributes="Bold"
+                               HorizontalTextAlignment="Center" />
+                    </StackLayout>
+                </Frame>
+            </Grid>
+            <Grid Padding="12,0,12,12">
+                <Label Text="Pembimbing"
+                       HorizontalTextAlignment="Center"
+                       TextColor="White"
+                       FontSize="20"
+                       FontAttributes="Bold" />
+            </Grid>
+            <Grid Padding="12,0,12,12">
+                <Frame BackgroundColor="White"
+                       CornerRadius="19">
+                    <StackLayout>
+                        <Label Text="Eddy Julianto, ST.,MT."
+                               TextColor="Black"
+                               FontSize="19"
+                               FontAttributes="Bold"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center" />
+                    </StackLayout>
+                </Frame>
+            </Grid>
+            <Grid Padding="12,0,12,12">
+                <Frame BackgroundColor="White"
+                       CornerRadius="19">
+                    <StackLayout>
+                        <Label Text="Paulus Mudjihartono, S.T.,M.T., Ph. D"
+                               TextColor="Black"
+                               FontSize="16"
+                               FontAttributes="Bold"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center" />
+                    </StackLayout>
+                </Frame>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

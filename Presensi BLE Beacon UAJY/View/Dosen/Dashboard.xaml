@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            xmlns:controls="clr-namespace:Refractored.XamForms.PullToRefresh;assembly=Refractored.XamForms.PullToRefresh"
+
+            x:Class="Presensi_BLE_Beacon_UAJY.View.Dosen.Dashboard"
+
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            android:TabbedPage.BarItemColor="White"
+            android:TabbedPage.BarSelectedItemColor="Yellow"
+
+            NavigationPage.HasNavigationBar="true"
+            NavigationPage.HasBackButton="False"
+
+            BackgroundColor="#185CA7">
+    <TabbedPage.BarBackgroundColor>
+        <Color x:Uid="colorPrimary">#2294F0</Color>
+    </TabbedPage.BarBackgroundColor>
+    <NavigationPage.TitleView>
+        <FlexLayout Direction="Row"
+                    AlignItems="Start">
+            <FlexLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="AccountToDetail" />
+            </FlexLayout.GestureRecognizers>
+            <Grid Padding="8,10,16,16">
+                <Image Source="Person_White.png">
+                    <Image.Source>
+                        <OnPlatform x:TypeArguments="FileImageSource">
+                            <On Platform="iOS, Android" Value="Person_White.png" />
+                            <On Platform="UWP" Value="Resources/Person_White.png" />
+                        </OnPlatform>
+                    </Image.Source>
+                </Image>
+            </Grid>
+            <Grid Padding="6,14,14,14">
+                <Label Text="Paulus Mudjihartono"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       TextColor="White" />
+            </Grid>
+        </FlexLayout>
+    </NavigationPage.TitleView>
+    <TabbedPage.Children>
+        <!--Tab Page Jadwal-->
+        <ContentPage Title="Jadwal"
+                     IconImageSource="Schedule_White.png">
+            <controls:PullToRefreshLayout IsPullToRefreshEnabled="True"
+                                          RefreshCommand="{Binding RefreshCommand}"
+                                          IsRefreshing="{Binding IsBusy}"
+                                          RefreshColor="Blue">
+                <ScrollView>
+                    <StackLayout BackgroundColor="#185CA7">
+                        <Grid Padding="56,20,56,12"
+                          VerticalOptions="Center">
+                            <Frame BackgroundColor="White"
+                               CornerRadius="19">
+                                <Label Text="Senin, 8 Februari 2021"
+                                   TextColor="Black"
+                                   FontAttributes="Bold"
+                                   FontSize="22"
+                                   HorizontalTextAlignment="Center" />
+                            </Frame>
+                        </Grid>
+                        <Grid Padding="20,0,0,12">
+                            <Label TextColor="White"
+                                   Text="Kelas Hari Ini"
+                                   FontAttributes="Bold"
+                                   FontSize="22"
+                                   HorizontalTextAlignment="Center" />
+                        </Grid>
+                        <Grid Padding="12,0,12,12">
+                            <Frame BackgroundColor="#F5C800"
+                                   CornerRadius="19">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="ClassToDetail" />
+                                </Frame.GestureRecognizers>
+                                <StackLayout>
+                                    <Label Text="Jaringan Komputer (A)"
+                                           TextColor="Black"
+                                           FontSize="19"
+                                           FontAttributes="Bold"
+                                           HorizontalTextAlignment="Center" />
+                                    <BoxView Color="Black"
+                                             HeightRequest="3"
+                                             HorizontalOptions="FillAndExpand" />
+                                    <FlexLayout Direction="Row"
+                                                AlignItems="Start"
+                                                JustifyContent="SpaceAround">
+                                        <Label TextColor="Black"
+                                               Text="Senin"
+                                               FontAttributes="Bold" />
+                                        <Label TextColor="Black"
+                                               Text="13.00 - 15.00"
+                                               FontAttributes="Bold" />
+                                        <Label TextColor="Black"
+                                               Text="R.3315"
+                                               FontAttributes="Bold" />
+                                    </FlexLayout>
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                        <Grid Padding="12,0,12,12">
+                            <Label Text="Jadwal Kelas"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="White"
+                                   FontSize="20"
+                                   FontAttributes="Bold" />
+                        </Grid>
+                        <Grid Padding="12,0,12,12">
+                            <Frame BackgroundColor="White"
+                               CornerRadius="19">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="ClassToDetail" />
+                                </Frame.GestureRecognizers>
+                                <StackLayout>
+                                    <Label Text="Komputasi Berbasis Biologi (A)"
+                                           TextColor="Black"
+                                           FontSize="19"
+                                           FontAttributes="Bold"
+                                           HorizontalTextAlignment="Center" />
+                                    <BoxView Color="Black"
+                                             HeightRequest="3"
+                                             HorizontalOptions="FillAndExpand" />
+                                    <FlexLayout Direction="Row"
+                                                AlignItems="Start"
+                                                JustifyContent="SpaceAround">
+                                        <Label TextColor="Black"
+                                               Text="Selasa"
+                                               FontAttributes="Bold" />
+                                        <Label TextColor="Black"
+                                               Text="13.00 - 15.00"
+                                               FontAttributes="Bold" />
+                                        <Label TextColor="Black"
+                                               Text="R.3320"
+                                               FontAttributes="Bold" />
+                                    </FlexLayout>
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </StackLayout>
+                </ScrollView>
+            </controls:PullToRefreshLayout>
+        </ContentPage>
+        <!--Tab Page Riwayat-->
+        <ContentPage Title="Riwayat"
+                     IconImageSource="History_White.png">
+            <controls:PullToRefreshLayout IsPullToRefreshEnabled="True"
+                                          RefreshCommand="{Binding RefreshCommand}"
+                                          IsRefreshing="{Binding IsBusy}"
+                                          RefreshColor="Blue">
+                <ScrollView>
+                    <StackLayout BackgroundColor="#185CA7">
+                        <Grid Padding="20,12,0,12">
+                            <Label Text="Riwayat Kelas"
+                                   TextColor="White"
+                                   FontAttributes="Bold"
+                                   FontSize="22"
+                                   HorizontalTextAlignment="Center" />
+                        </Grid>
+                        <Grid Padding="12,0,12,12">
+                            <Frame BackgroundColor="White"
+                                   CornerRadius="19">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="ClassToHistory" />
+                                </Frame.GestureRecognizers>
+                                <StackLayout>
+                                    <Label Text="8 Februari 2021"
+                                           TextColor="Black"
+                                           FontSize="14"
+                                           FontAttributes="Bold"
+                                           HorizontalTextAlignment="Start" />
+                                    <BoxView Color="Black"
+                                             HeightRequest="2"
+                                             HorizontalOptions="FillAndExpand" />
+                                    <Label Text="Komputasi Berbasis Biologi (A)"
+                                           TextColor="Black"
+                                           FontSize="18"
+                                           FontAttributes="Bold"
+                                           HorizontalTextAlignment="Center" />
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </StackLayout>
+                </ScrollView>
+            </controls:PullToRefreshLayout>
+        </ContentPage>
+        <!--Tab Page Akun-->
+        <ContentPage Title="Akun"
+                     IconImageSource="Person_White.png">
+            <StackLayout BackgroundColor="#185CA7">
+                <Grid Padding="12,50,12,6">
+                    <Button ImageSource="Analytics_White.png"
+                            Text="Statistik"
+                            TextColor="White"
+                            CornerRadius="19"
+                            Clicked="AccountToStatistic"
+                            BackgroundColor="#0099FF"
+                            FontAttributes="Bold"
+                            FontSize="18">
+                    </Button>
+                </Grid>
+                <Grid Padding="12,6,12,6">
+                    <Button ImageSource="Settings_White.png"
+                            Text="Pengaturan"
+                            TextColor="White"
+                            CornerRadius="19"
+                            Clicked="AccountToSetting"
+                            BackgroundColor="#0099FF"
+                            FontAttributes="Bold"
+                            FontSize="18">
+                    </Button>
+                </Grid>
+                <Grid Padding="12,6,12,6">
+                    <Button ImageSource="Info_White.png"
+                            Text="Tentang Aplikasi"
+                            TextColor="White"
+                            CornerRadius="19"
+                            Clicked="AccountToAbout"
+                            BackgroundColor="#0099FF"
+                            FontAttributes="Bold"
+                            FontSize="18">
+                    </Button>
+                </Grid>
+                <Grid Padding="12,6,12,6">
+                    <Button ImageSource="Exit_White.png"
+                            Text="Keluar"
+                            TextColor="White"
+                            CornerRadius="19"
+                            Clicked="ToLogin"
+                            BackgroundColor="Red"
+                            FontAttributes="Bold"
+                            FontSize="18">
+                    </Button>
+                </Grid>
+            </StackLayout>
+        </ContentPage>
+    </TabbedPage.Children>
+</TabbedPage>

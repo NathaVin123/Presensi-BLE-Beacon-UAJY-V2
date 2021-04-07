@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Presensi_BLE_Beacon_UAJY.View.Pengaturan.SettingsPage"
+             
+             Title="Pengaturan"
+             BackgroundColor="#185CA7">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout BackgroundColor="#185CA7">
+                <Grid Padding="12">
+                    <Frame BackgroundColor="#0099FF"
+                           CornerRadius="19">
+                        <StackLayout>
+                            <Label Text="Pengingat Kelas"
+                                   TextColor="White"
+                                   VerticalOptions="Center"
+                                   FontAttributes="Bold"
+                                   FontSize="18"/>
+                            <Switch ThumbColor="White"
+                                    IsToggled="False">
+                            </Switch>
+                        </StackLayout>
+                    </Frame>
+
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
