@@ -65,6 +65,5 @@ namespace Presensi_BLE_Beacon_UAJY.Common.Models
 
         [JsonProperty("kdStatusDosen")]
         public string KD_STATUS_DOSEN { get; set; }
-
-}
+    }
 }

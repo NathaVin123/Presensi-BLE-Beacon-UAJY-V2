@@ -31,7 +31,7 @@ namespace Presensi_BLE_Beacon_UAJY.View.Login
                     await Navigation.PushAsync(new Dosen.Dashboard());
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 await DisplayAlert("Gagal Login", "Anda belum memilih Role", "Oke");
             }

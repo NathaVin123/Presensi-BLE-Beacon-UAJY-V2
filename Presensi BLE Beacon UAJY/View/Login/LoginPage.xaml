@@ -1,10 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-
+             xmlns:viewModels="clr-namespace:Presensi_BLE_Beacon_UAJY.ViewModel"
              x:Class="Presensi_BLE_Beacon_UAJY.View.Login.LoginPage"
-
              NavigationPage.HasNavigationBar="false">
+    <ContentPage.BindingContext>
+        <viewModels:LoginViewModel />
+    </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout BackgroundColor="#185CA7">
             <Grid Margin="16">
@@ -48,7 +50,7 @@
                                 </Picker.ItemsSource>
                             </Picker>
                             <Entry BackgroundColor="Transparent"
-                                   Text="{Binding Username}"
+                                   Text="{Binding NPM}"
                                    Placeholder="NPM / NPP"
                                    PlaceholderColor="Gray"
                                    Keyboard="Numeric" />
@@ -58,14 +60,15 @@
                                    PlaceholderColor="Gray"
                                    IsPassword="True" />
                             <Label Text="NPM / NPP / Password anda salah"
-                                   IsVisible="{Binding AreCredentialsInvalid}"
+                                   IsVisible="{Binding LoginCommand}"
                                    TextColor="Red" />
                             <Grid Padding="5" />
                             <Button BackgroundColor="#0099FF"
                                     Grid.Row="2"
                                     Text="Masuk"
                                     CornerRadius="19"
-                                    Clicked="LoginToDashboard" />
+                                    Clicked="LoginToDashboard"
+                                    Command="{Binding LoginCommand}" />
                         </StackLayout>
                     </Grid>
                 </Frame>

@@ -1,52 +1,48 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Presensi_BLE_Beacon_UAJY.Common.Models;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Presensi_BLE_Beacon_UAJY.Common.Services
 {
-    class APIService
+    internal class APIService
     {
-        public async Task<Response> GetListAsync<T>(string urlBase, string servicePrefix, string controller)
+        public async Task<string> LoginAsync(string userName, string password)
         {
-            try
+            var keyValues = new List<KeyValuePair<string, string>>
             {
-                var client = new HttpClient
-                {
-                    BaseAddress = new Uri(urlBase)
-                };
-                var url = $"{servicePrefix}{controller}";
-                var response = await client.GetAsync(url);
-                var result = await response.Content.ReadAsStringAsync();
+                new KeyValuePair<string, string>("username", userName),
+                new KeyValuePair<string, string>("password", password),
+            };
 
-                if (!response.IsSuccessStatusCode)
-                {
-                    return new Response
-                    {
-                        IsSuccess = false,
-                        Message = result,
-                    };
-                }
+            var request = new HttpRequestMessage(
+                HttpMethod.Post, Constants.BaseApiAddress + "Token");
 
-                var list = JsonConvert.DeserializeObject<List<T>>(result);
-                return new Response
-                {
-                    IsSuccess = true,
-                    Result = list
-                };
-            }
-            catch (Exception ex)
-            {
-                return new Response
-                {
-                    IsSuccess = false,
-                    Message = ex.Message
-                };
-            }
+            request.Content = new FormUrlEncodedContent(keyValues);
+
+            var client = new HttpClient();
+            var response = await client.SendAsync(request);
+
+            var content = await response.Content.ReadAsStringAsync();
+
+            JObject jwtDynamic = JsonConvert.DeserializeObject<dynamic>(content);
+
+            var accessTokenExpiration = jwtDynamic.Value<DateTime>(".expires");
+            var accessToken = jwtDynamic.Value<string>("access_token");
+
+            Settings.AccessTokenExpirationDate = accessTokenExpiration;
+
+            Debug.WriteLine(accessTokenExpiration);
+
+            Debug.WriteLine(content);
+
+            return accessToken;
         }
     }
 }

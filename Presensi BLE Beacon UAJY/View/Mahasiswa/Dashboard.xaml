@@ -34,7 +34,7 @@
                 </Image>
             </Grid>
             <Grid Padding="6,14,14,14">
-                <Label Text="Nathaniel Vincent Wibowo"
+                <Label Text="-"
                        FontSize="20"
                        FontAttributes="Bold"
                        TextColor="White" />
@@ -57,7 +57,7 @@
                               VerticalOptions="Center">
                             <Frame BackgroundColor="White"
                                    CornerRadius="19">
-                                <Label Text="Senin, 8 Februari 2021"
+                                <Label Text="-"
                                        TextColor="Black"
                                        FontAttributes="Bold"
                                        FontSize="22"
@@ -78,12 +78,12 @@
                                     <TapGestureRecognizer Tapped="ClassToDetail" />
                                 </Frame.GestureRecognizers>
                                 <StackLayout>
-                                    <Label Text="Jaringan Komputer (A)"
+                                    <Label Text="-"
                                            TextColor="Black"
                                            FontSize="18"
                                            FontAttributes="Bold"
                                            HorizontalTextAlignment="Center" />
-                                    <Label Text="Joseph Eric Samodra"
+                                    <Label Text="-"
                                            TextColor="Black"
                                            FontSize="14"
                                            FontAttributes="None"
@@ -95,13 +95,13 @@
                                                 AlignItems="Start"
                                                 JustifyContent="SpaceAround">
                                         <Label TextColor="Black"
-                                               Text="Senin"
+                                               Text="-"
                                                FontAttributes="Bold" />
                                         <Label TextColor="Black"
-                                               Text="13.00 - 15.00"
+                                               Text="-"
                                                FontAttributes="Bold" />
                                         <Label TextColor="Black"
-                                               Text="R.3315"
+                                               Text="-"
                                                FontAttributes="Bold" />
                                     </FlexLayout>
                                 </StackLayout>
@@ -114,6 +114,58 @@
                                    FontSize="22"
                                    FontAttributes="Bold" />
                         </Grid>
+                        <ListView ItemsSource="{Binding KelasTerdekat}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout>
+                                            <Grid Padding="12,0,12,12">
+                                                <Frame BackgroundColor="White"
+                                                       CornerRadius="19">
+                                                    <Frame.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="Presence" />
+                                                    </Frame.GestureRecognizers>
+                                                    <FlexLayout Direction="Row">
+                                                        <Image WidthRequest="80"
+                                                               Aspect="AspectFit"
+                                                               HorizontalOptions="Center"
+                                                               VerticalOptions="Center">
+                                                            <Image.Source>
+                                                                <OnPlatform x:TypeArguments="FileImageSource">
+                                                                    <On Platform="iOS, Android" Value="School_Black.png" />
+                                                                    <On Platform="UWP" Value="Resources/School_Black.png" />
+                                                                </OnPlatform>
+                                                            </Image.Source>
+                                                        </Image>
+                                                        <Grid Padding="20,0,0,0" />
+                                                        <StackLayout WidthRequest="235">
+                                                            <Label FontSize="18"
+                                                                   TextColor="Black"
+                                                                   Text="Jaringan Komputer (A)"
+                                                                   FontAttributes="Bold"
+                                                                   HorizontalTextAlignment="Start" />
+                                                            <Label FontSize="14"
+                                                                   TextColor="Black"
+                                                                   Text="Joseph Eric Samodra"
+                                                                   FontAttributes="None"
+                                                                   HorizontalTextAlignment="Start" />
+                                                            <BoxView Color="Black"
+                                                                     HeightRequest="2"
+                                                                     HorizontalOptions="FillAndExpand" />
+                                                            <Label FontSize="14"
+                                                                   TextColor="Black"
+                                                                   Text="R.3315"
+                                                                   FontAttributes="Bold"
+                                                                   HorizontalTextAlignment="End" />
+                                                        </StackLayout>
+                                                    </FlexLayout>
+                                                </Frame>
+                                            </Grid>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
                         <Grid Padding="12,0,12,12">
                             <Frame BackgroundColor="White"
                                CornerRadius="19">
@@ -135,23 +187,23 @@
                                     <Grid Padding="20,0,0,0" />
                                     <StackLayout WidthRequest="235">
                                         <Label FontSize="18"
-                                           TextColor="Black"
-                                           Text="Jaringan Komputer (A)"
-                                           FontAttributes="Bold"
-                                           HorizontalTextAlignment="Start" />
+                                               TextColor="Black"
+                                               Text="Jaringan Komputer (A)"
+                                               FontAttributes="Bold"
+                                               HorizontalTextAlignment="Start" />
                                         <Label FontSize="14"
-                                           TextColor="Black"
-                                           Text="Joseph Eric Samodra"
-                                           FontAttributes="None"
-                                           HorizontalTextAlignment="Start" />
+                                               TextColor="Black"
+                                               Text="Joseph Eric Samodra"
+                                               FontAttributes="None"
+                                               HorizontalTextAlignment="Start" />
                                         <BoxView Color="Black"
-                                             HeightRequest="2"
-                                             HorizontalOptions="FillAndExpand" />
+                                                 HeightRequest="2"
+                                                 HorizontalOptions="FillAndExpand" />
                                         <Label FontSize="14"
-                                           TextColor="Black"
-                                           Text="R.3315"
-                                           FontAttributes="Bold"
-                                           HorizontalTextAlignment="End" />
+                                               TextColor="Black"
+                                               Text="R.3315"
+                                               FontAttributes="Bold"
+                                               HorizontalTextAlignment="End" />
                                     </StackLayout>
                                 </FlexLayout>
                             </Frame>

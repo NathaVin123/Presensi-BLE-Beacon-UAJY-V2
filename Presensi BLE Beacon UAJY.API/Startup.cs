@@ -1,21 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Presensi_BLE_Beacon_UAJY.API.Data;
-//using Presensi_BLE_Beacon_UAJY.API.Data.Entities;
-//using Presensi_BLE_Beacon_UAJY.API.Data.Repository;
-//using Presensi_BLE_Beacon_UAJY.API.Helpers;
+using Presensi_BLE_Beacon_UAJY.API.Data.Entities;
+using Presensi_BLE_Beacon_UAJY.API.Data.Repository;
+using Presensi_BLE_Beacon_UAJY.API.Helpers;
+using System.Text;
 
 namespace Presensi_BLE_Beacon_UAJY.API
 {
@@ -31,35 +27,95 @@ namespace Presensi_BLE_Beacon_UAJY.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
-            services.AddSwaggerGen(c =>
+            services.Configure<CookiePolicyOptions>(options =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Presensi_BLE_Beacon_UAJY.API", Version = "v1" });
+                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<Presensi_BLE_Beacon_UAJYContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("Presensi_BLE_Beacon_UAJYContext")));
+
+
+            services.AddDbContext<DataContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+
+            });
+
+            //services.Configure<IISServerOptions>(options => { options.AutomaticAuthentication = true; });
+            //services.Configure<IISOptions>(options => { options.ForwardClientCertificate = true; });
+
+            //aqui lleo la bd de datos para pruebas.
+
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<ICountryRepository, CountryRepository>();
+            services.AddScoped<IUserHelper, UserHelper>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IEmailHelper, MailHelper>();
+
+            //configuracion del identitypara los usuaarios:
+            services.AddIdentity<User, IdentityRole>(options =>
+            {
+                options.Tokens.AuthenticatorTokenProvider = TokenOptions.DefaultAuthenticatorProvider;
+                options.SignIn.RequireConfirmedEmail = true;
+                options.User.RequireUniqueEmail = true;
+                options.Password.RequireDigit = false;
+                options.Password.RequiredUniqueChars = 0;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequiredLength = 6;
+            }).AddDefaultTokenProviders()
+              .AddEntityFrameworkStores<DataContext>();
+
+            services.AddAuthentication().AddCookie().AddJwtBearer(cfg =>
+            {
+                cfg.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidIssuer = this.Configuration["Tokens:Issuer"],
+                    ValidAudience = this.Configuration["Tokens:Audience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(this.Configuration["Tokens:key"]))
+                };
+            });
+
+            //aqui utilizo la vista de no autorizado ya sea por login or acceso deegado:
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Account/NotAuthorized";
+                options.AccessDeniedPath = "/Account/NotAuthorized";
+            });
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Presensi_BLE_Beacon_UAJY.API v1"));
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseHsts();
             }
 
+
+            //esta app la ujtilizo para la o existencia de las view:
+            app.UseStatusCodePagesWithReExecute("/error/{0}");
+
             app.UseHttpsRedirection();
+            app.UseAuthentication();
+            app.UseStaticFiles();
+            app.UseCookiePolicy();
 
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
+            app.UseMvc(routes =>
             {
-                endpoints.MapControllers();
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
