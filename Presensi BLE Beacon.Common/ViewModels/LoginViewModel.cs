@@ -13,7 +13,7 @@
 
     public class LoginViewModel : MvxViewModel
     {
-        private string email;
+        private string npm;
         private string password;
         private MvxCommand loginCommand;
         private readonly IApiService apiService;
@@ -26,7 +26,7 @@
             set => this.SetProperty(ref isLoading, value);
         }
 
-        public string Email { get => this.email; set => this.SetProperty(ref this.email, value); }
+        public string NPM { get => this.npm; set => this.SetProperty(ref this.npm, value); }
 
         public string Password { get => this.password; set => this.SetProperty(ref this.password, value); }
 
@@ -49,14 +49,14 @@
             this.dialogService = dialogService;
 
 
-            this.Email = "jzuluaga55@gmail.com";
-            this.Password = "123456";
+            this.NPM = "170709127";
+            this.Password = "@Gamepb1";
             this.IsLoading = false;
         }
 
         private async void DoLoginCommandAsync()
         {
-            if (string.IsNullOrEmpty(this.Email))
+            if (string.IsNullOrEmpty(this.NPM))
             {
                 this.dialogService.Alert("Error", "You must enter an Email.", "Accept");
                 return;
@@ -73,11 +73,11 @@
             var request = new TokenRequest
             {
                 Password = this.Password,
-                NPM = this.Email,
+                NPM = this.NPM,
             };
 
 
-            var response = await this.apiService.GetTokenAsync("", "/ACCount", "/CreateToken", request);
+            var response = await this.apiService.GetTokenAsync("", "/Account", "/CreateToken", request);
 
             if (!response.IsSuccess)
             {

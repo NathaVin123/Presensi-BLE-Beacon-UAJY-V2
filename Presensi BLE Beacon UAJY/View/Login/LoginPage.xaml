@@ -1,12 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewModels="clr-namespace:Presensi_BLE_Beacon_UAJY.ViewModel"
              x:Class="Presensi_BLE_Beacon_UAJY.View.Login.LoginPage"
-             NavigationPage.HasNavigationBar="false">
-    <ContentPage.BindingContext>
-        <viewModels:LoginViewModel />
-    </ContentPage.BindingContext>
+             NavigationPage.HasNavigationBar="false"
+             BindingContext="Presensi_BLE_Beacon_UAJY.View.viewModels:LoginViewModel">
     <ContentPage.Content>
         <StackLayout BackgroundColor="#185CA7">
             <Grid Margin="16">

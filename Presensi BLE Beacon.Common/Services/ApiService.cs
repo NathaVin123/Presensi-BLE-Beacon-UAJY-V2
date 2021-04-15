@@ -321,12 +321,12 @@ namespace Presensi_BLE_Beacon_UAJY.Common.Services
 
         }
         public async Task<Response> GetUserByEmailAsync(
-      string urlBase,
-      string servicePrefix,
-      string controller,
-      string npm,
-      string tokenType,
-      string accessToken)
+          string urlBase,
+          string servicePrefix,
+          string controller,
+          string npm,
+          string tokenType,
+          string accessToken)
         {
             try
             {

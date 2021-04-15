@@ -2,10 +2,6 @@
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
-    "iis": {
-      "applicationUrl": "http://localhost/PresensiBLEBeacon",
-      "sslPort": 0
-    },
     "iisExpress": {
       "applicationUrl": "http://localhost:59765",
       "sslPort": 44326
@@ -16,6 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
+      "launchUrl": "api/home",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -23,6 +20,7 @@
     "Presensi_BLE_Beacon_UAJY.API": {
       "commandName": "Project",
       "launchBrowser": true,
+      "launchUrl": "api/home",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

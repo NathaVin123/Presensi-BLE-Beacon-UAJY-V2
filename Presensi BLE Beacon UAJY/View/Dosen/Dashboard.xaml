@@ -34,7 +34,7 @@
                 </Image>
             </Grid>
             <Grid Padding="6,14,14,14">
-                <Label Text="Paulus Mudjihartono"
+                <Label Text="-"
                        FontSize="20"
                        FontAttributes="Bold"
                        TextColor="White" />
@@ -55,7 +55,7 @@
                           VerticalOptions="Center">
                             <Frame BackgroundColor="White"
                                CornerRadius="19">
-                                <Label Text="Senin, 8 Februari 2021"
+                                <Label Text="-"
                                    TextColor="Black"
                                    FontAttributes="Bold"
                                    FontSize="22"
@@ -69,14 +69,15 @@
                                    FontSize="22"
                                    HorizontalTextAlignment="Center" />
                         </Grid>
+
                         <Grid Padding="12,0,12,12">
                             <Frame BackgroundColor="#F5C800"
-                                   CornerRadius="19">
+                                                       CornerRadius="19">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="ClassToDetail" />
                                 </Frame.GestureRecognizers>
                                 <StackLayout>
-                                    <Label Text="Jaringan Komputer (A)"
+                                    <Label Text="-"
                                            TextColor="Black"
                                            FontSize="19"
                                            FontAttributes="Bold"
@@ -88,13 +89,13 @@
                                                 AlignItems="Start"
                                                 JustifyContent="SpaceAround">
                                         <Label TextColor="Black"
-                                               Text="Senin"
+                                               Text="-"
                                                FontAttributes="Bold" />
                                         <Label TextColor="Black"
-                                               Text="13.00 - 15.00"
+                                               Text="-"
                                                FontAttributes="Bold" />
                                         <Label TextColor="Black"
-                                               Text="R.3315"
+                                               Text="-"
                                                FontAttributes="Bold" />
                                     </FlexLayout>
                                 </StackLayout>
@@ -107,37 +108,47 @@
                                    FontSize="20"
                                    FontAttributes="Bold" />
                         </Grid>
-                        <Grid Padding="12,0,12,12">
-                            <Frame BackgroundColor="White"
-                               CornerRadius="19">
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="ClassToDetail" />
-                                </Frame.GestureRecognizers>
-                                <StackLayout>
-                                    <Label Text="Komputasi Berbasis Biologi (A)"
-                                           TextColor="Black"
-                                           FontSize="19"
-                                           FontAttributes="Bold"
-                                           HorizontalTextAlignment="Center" />
-                                    <BoxView Color="Black"
-                                             HeightRequest="3"
-                                             HorizontalOptions="FillAndExpand" />
-                                    <FlexLayout Direction="Row"
-                                                AlignItems="Start"
-                                                JustifyContent="SpaceAround">
-                                        <Label TextColor="Black"
-                                               Text="Selasa"
-                                               FontAttributes="Bold" />
-                                        <Label TextColor="Black"
-                                               Text="13.00 - 15.00"
-                                               FontAttributes="Bold" />
-                                        <Label TextColor="Black"
-                                               Text="R.3320"
-                                               FontAttributes="Bold" />
-                                    </FlexLayout>
-                                </StackLayout>
-                            </Frame>
-                        </Grid>
+                        <ListView ItemsSource="{Binding JadwalKelasDosen}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout>
+                                            <Grid Padding="12,0,12,12">
+                                                <Frame BackgroundColor="White"
+                                                       CornerRadius="19">
+                                                    <Frame.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="ClassToDetail" />
+                                                    </Frame.GestureRecognizers>
+                                                    <StackLayout>
+                                                        <Label Text="-"
+                                                               TextColor="Black"
+                                                               FontSize="19"
+                                                               FontAttributes="Bold"
+                                                               HorizontalTextAlignment="Center" />
+                                                        <BoxView Color="Black"
+                                                                 HeightRequest="3"
+                                                                 HorizontalOptions="FillAndExpand" />
+                                                        <FlexLayout Direction="Row"
+                                                                    AlignItems="Start"
+                                                                    JustifyContent="SpaceAround">
+                                                            <Label TextColor="Black"
+                                                                   Text="-"
+                                                                   FontAttributes="Bold" />
+                                                            <Label TextColor="Black"
+                                                                   Text="-"
+                                                                   FontAttributes="Bold" />
+                                                            <Label TextColor="Black"
+                                                                   Text="-"
+                                                                   FontAttributes="Bold" />
+                                                        </FlexLayout>
+                                                    </StackLayout>
+                                                </Frame>
+                                            </Grid>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
                     </StackLayout>
                 </ScrollView>
             </controls:PullToRefreshLayout>
@@ -158,29 +169,39 @@
                                    FontSize="22"
                                    HorizontalTextAlignment="Center" />
                         </Grid>
-                        <Grid Padding="12,0,12,12">
-                            <Frame BackgroundColor="White"
-                                   CornerRadius="19">
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="ClassToHistory" />
-                                </Frame.GestureRecognizers>
-                                <StackLayout>
-                                    <Label Text="8 Februari 2021"
-                                           TextColor="Black"
-                                           FontSize="14"
-                                           FontAttributes="Bold"
-                                           HorizontalTextAlignment="Start" />
-                                    <BoxView Color="Black"
-                                             HeightRequest="2"
-                                             HorizontalOptions="FillAndExpand" />
-                                    <Label Text="Komputasi Berbasis Biologi (A)"
-                                           TextColor="Black"
-                                           FontSize="18"
-                                           FontAttributes="Bold"
-                                           HorizontalTextAlignment="Center" />
-                                </StackLayout>
-                            </Frame>
-                        </Grid>
+                        <ListView ItemsSource="{Binding RiwayatKelasDosen}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout>
+                                            <Grid Padding="12,0,12,12">
+                                                <Frame BackgroundColor="White"
+                                                       CornerRadius="19">
+                                                    <Frame.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="ClassToHistory" />
+                                                    </Frame.GestureRecognizers>
+                                                    <StackLayout>
+                                                        <Label Text="-"
+                                                               TextColor="Black"
+                                                               FontSize="14"
+                                                               FontAttributes="Bold"
+                                                               HorizontalTextAlignment="Start" />
+                                                        <BoxView Color="Black"
+                                                                 HeightRequest="2"
+                                                                 HorizontalOptions="FillAndExpand" />
+                                                        <Label Text="-"
+                                                               TextColor="Black"
+                                                               FontSize="18"
+                                                               FontAttributes="Bold"
+                                                               HorizontalTextAlignment="Center" />
+                                                    </StackLayout>
+                                                </Frame>
+                                            </Grid>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
                     </StackLayout>
                 </ScrollView>
             </controls:PullToRefreshLayout>

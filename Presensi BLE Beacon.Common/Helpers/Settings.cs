@@ -2,6 +2,7 @@
 {
     using Plugin.Settings;
     using Plugin.Settings.Abstractions;
+
     public class Settings
     {
         #region Atributtes
@@ -11,12 +12,11 @@
         private const string userPassword = "userPassword";
         private const string mahasiswa = "mahasiswa";
         private static readonly string stringDefault = string.Empty;
-        private static readonly bool boolDefault = false;
-        #endregion
 
-
+        #endregion Atributtes
 
         #region Properties
+
         public static ISettings AppSettings => CrossSettings.Current;
 
         public static string User
@@ -25,12 +25,12 @@
             set => AppSettings.AddOrUpdateValue(mahasiswa, value);
         }
 
-
         public static string Token
         {
             get => AppSettings.GetValueOrDefault(token, stringDefault);
             set => AppSettings.AddOrUpdateValue(token, value);
         }
+
         public static string UserEmail
         {
             get => AppSettings.GetValueOrDefault(userNPM, stringDefault);
@@ -42,6 +42,7 @@
             get => AppSettings.GetValueOrDefault(userPassword, stringDefault);
             set => AppSettings.AddOrUpdateValue(userPassword, value);
         }
-        #endregion
+
+        #endregion Properties
     }
 }

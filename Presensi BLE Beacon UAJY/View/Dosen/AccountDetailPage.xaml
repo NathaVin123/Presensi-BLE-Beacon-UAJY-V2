@@ -11,7 +11,7 @@
                     <Frame BackgroundColor="#42A2FB"
                                HeightRequest="50"
                                CornerRadius="19">
-                        <Label Text="Paulus MudjiHartono"
+                        <Label Text="-"
                                HorizontalTextAlignment="Center"
                                VerticalTextAlignment="Center"
                                FontSize="20"
@@ -58,7 +58,7 @@
                                    FontSize="15"
                                    FontAttributes="Bold"
                                    HorizontalTextAlignment="Start" />
-                            <Label Text="Dosen : Informatika"
+                            <Label Text="Dosen : -"
                                    TextColor="Black"
                                    FontSize="15"
                                    FontAttributes="Bold"
