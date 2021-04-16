@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Presensi_BLE_Beacon_UAJY.View.Login.LoginPage"
              NavigationPage.HasNavigationBar="false"
-             BindingContext="Presensi_BLE_Beacon_UAJY.View.viewModels:LoginViewModel">
+             BindingContext="Presensi_BLE_Beacon_UAJY.ViewModel.LoginViewModel">
     <ContentPage.Content>
         <StackLayout BackgroundColor="#185CA7">
             <Grid Margin="16">
@@ -56,9 +56,9 @@
                                    Placeholder="Password"
                                    PlaceholderColor="Gray"
                                    IsPassword="True" />
-                            <Label Text="NPM / NPP / Password anda salah"
+                            <!--<Label Text="NPM / NPP / Password anda salah"
                                    IsVisible="{Binding LoginCommand}"
-                                   TextColor="Red" />
+                                   TextColor="Red" />-->
                             <Grid Padding="5" />
                             <Button BackgroundColor="#0099FF"
                                     Grid.Row="2"
