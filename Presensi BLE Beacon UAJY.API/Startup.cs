@@ -70,7 +70,8 @@ namespace Presensi_BLE_Beacon_UAJY.API
             app.UseRouting();
 
             app.UseAuthentication();
-            //app.UseAuthorization();
+
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

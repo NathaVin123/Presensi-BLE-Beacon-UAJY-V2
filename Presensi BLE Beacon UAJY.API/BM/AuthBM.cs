@@ -23,16 +23,16 @@ namespace Presensi_BLE_Beacon_UAJY.API.BM
             output = new OutPutApi();
         }
 
-        public OutPutApi LoginSiatma(string username, string password)
+        public OutPutApi LoginMhs(string npm, string password)
         {
-            var ul = dao.GetDataMhs(username);
+            var ul = dao.GetDataMhs(npm);
             if (ul != null)
             {
-                if (cekpasswordMhs(password, ul.PASSWORD) || password == "cobaloginsiatma")
+                if (cekpasswordMhs(password, ul.PASSWORD))
                 {
                     if (ul.KD_STATUS_MHS == "A")
                     {
-                        var data = dao.GetProfileMhs(username);
+                        var data = dao.GetProfileMhs(npm);
 
                         var tokenHandler = new JwtSecurityTokenHandler();
                         var key = Encoding.ASCII.GetBytes(AppSettings.secret);
@@ -41,8 +41,7 @@ namespace Presensi_BLE_Beacon_UAJY.API.BM
                             Subject = new ClaimsIdentity(new Claim[]
                             {
                                         new Claim(ClaimTypes.Name, data.NAMA_MHS),
-                                        new Claim(ClaimTypes.Role, "Mahasiswa"),
-                                        new Claim("username", data.NPM)
+                                        new Claim("NPM", data.NPM)
                             }),
                             Expires = DateTime.UtcNow.AddDays(7),
                             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)

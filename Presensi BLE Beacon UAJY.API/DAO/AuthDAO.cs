@@ -17,7 +17,7 @@ namespace Presensi_BLE_Beacon_UAJY.API.DAO
                 conn = new SqlConnection(DBKoneksi.koneksi);
                 string query = @"SELECT m.NPM, m.NAMA_MHS, m.PASSWORD, m.KD_STATUS_MHS
                                 FROM MST_MHS_AKTIF m
-                                WHERE a.NPM = @npm";
+                                WHERE m.NPM = @npm";
 
                 var param = new { npm = npm };
                 var data = conn.QuerySingleOrDefault<dynamic>(query, param);
@@ -66,7 +66,9 @@ namespace Presensi_BLE_Beacon_UAJY.API.DAO
             {
                 conn = new SqlConnection(DBKoneksi.koneksi);
 
-                string query = @"";
+                string query = @"SELECT m.NPM, m.NAMA_MHS, m.PASSWORD, m.KD_STATUS_MHS
+                                FROM MST_MHS_AKTIF m
+                                WHERE m.NPM = @npm";
 
                 var param = new { NPM = npm };
                 var data = conn.QuerySingleOrDefault<dynamic>(query, param);
@@ -90,7 +92,9 @@ namespace Presensi_BLE_Beacon_UAJY.API.DAO
             {
                 conn = new SqlConnection(DBKoneksi.koneksi);
 
-                string query = @"";
+                string query = @"SELECT D.NPP, D.NAMA_DOSEN_LENGKAP
+                                FROM dbo.MST_DOSEN D
+                                WHERE (D.NPP = @npp) AND KD_STATUS_DOSEN ='A'";
 
                 var param = new { NPP = npp };
                 var data = conn.QuerySingleOrDefault<dynamic>(query, param);

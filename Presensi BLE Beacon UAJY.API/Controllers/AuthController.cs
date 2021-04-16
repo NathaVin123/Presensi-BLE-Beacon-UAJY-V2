@@ -22,12 +22,12 @@ namespace Presensi_BLE_Beacon_UAJY.API.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost("LoginSiatma")]
-        public ActionResult LoginSiatma(UserLogin ul)
+        [HttpPost("LoginMhs")]
+        public ActionResult LoginMhs(UserLoginMhs ul)
         {
             try
             {
-                var data = bm.LoginSiatma(ul.username, ul.password);
+                var data = bm.LoginMhs(ul.NPM, ul.PASSWORD);
 
                 return Ok(data);
             }

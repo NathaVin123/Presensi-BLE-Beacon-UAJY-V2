@@ -25,7 +25,6 @@ namespace Presensi_BLE_Beacon_UAJY.Droid
             LoadApplication(new App());
 
             BluetoothAdapter bluetoothAdapter = BluetoothAdapter.DefaultAdapter;
-            // is bluetooth enabled?
             if (bluetoothAdapter.IsEnabled == false)
             {
                 bluetoothAdapter.Enable();
@@ -34,14 +33,6 @@ namespace Presensi_BLE_Beacon_UAJY.Droid
             {
                 bluetoothAdapter.Disable();
             }
-
-            //this.ShinyOnCreate();
-        }
-
-        protected override void OnNewIntent(Intent intent)
-        {
-            base.OnNewIntent(intent);
-            this.ShinyOnNewIntent(intent);
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
