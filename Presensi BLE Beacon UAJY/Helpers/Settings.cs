@@ -1,65 +1,35 @@
-﻿using Plugin.Settings;
+﻿using System;
+using Plugin.Settings;
 using Plugin.Settings.Abstractions;
-using System;
 
 namespace Presensi_BLE_Beacon_UAJY.Helpers
 {
     public static class Settings
     {
-        private static ISettings AppSettings
-        {
-            get
-            {
-                return CrossSettings.Current;
-            }
-        }
+        private static ISettings AppSettings => CrossSettings.Current;
 
         public static string NPM
         {
-            get
-            {
-                return AppSettings.GetValueOrDefault("NPM", "");
-            }
-            set
-            {
-                AppSettings.AddOrUpdateValue("NPM", value);
-            }
+            get => AppSettings.GetValueOrDefault(nameof(NPM), string.Empty);
+            set => AppSettings.AddOrUpdateValue(nameof(NPM), value);
         }
 
-        public static string Password
+        public static string PASSWORD
         {
-            get
-            {
-                return AppSettings.GetValueOrDefault("Password", "");
-            }
-            set
-            {
-                AppSettings.AddOrUpdateValue("Password", value);
-            }
+            get => AppSettings.GetValueOrDefault(nameof(PASSWORD), string.Empty);
+            set => AppSettings.AddOrUpdateValue(nameof(PASSWORD), value);
         }
 
         public static string AccessToken
         {
-            get
-            {
-                return AppSettings.GetValueOrDefault("AccessToken", "");
-            }
-            set
-            {
-                AppSettings.AddOrUpdateValue("AccessToken", value);
-            }
+            get => AppSettings.GetValueOrDefault(nameof(AccessToken), string.Empty);
+            set => AppSettings.AddOrUpdateValue(nameof(AccessToken), value);
         }
 
         public static DateTime AccessTokenExpirationDate
         {
-            get
-            {
-                return AppSettings.GetValueOrDefault("AccessTokenExpirationDate", DateTime.UtcNow);
-            }
-            set
-            {
-                AppSettings.AddOrUpdateValue("AccessTokenExpirationDate", value);
-            }
+            get => AppSettings.GetValueOrDefault(nameof(AccessTokenExpirationDate), DateTime.UtcNow);
+            set => AppSettings.AddOrUpdateValue(nameof(AccessTokenExpirationDate), value);
         }
     }
 }

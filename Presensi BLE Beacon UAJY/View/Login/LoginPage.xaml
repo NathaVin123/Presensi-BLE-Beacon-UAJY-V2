@@ -1,9 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:Presensi_BLE_Beacon_UAJY.ViewModel"
              x:Class="Presensi_BLE_Beacon_UAJY.View.Login.LoginPage"
-             NavigationPage.HasNavigationBar="false"
-             BindingContext="Presensi_BLE_Beacon_UAJY.ViewModel.LoginViewModel">
+             NavigationPage.HasNavigationBar="false">
+    
+    <ContentPage.BindingContext>
+        <viewModels:LoginViewModel/>
+    </ContentPage.BindingContext>
+    
     <ContentPage.Content>
         <StackLayout BackgroundColor="#185CA7">
             <Grid Margin="16">
@@ -52,7 +57,7 @@
                                    PlaceholderColor="Gray"
                                    Keyboard="Numeric" />
                             <Entry BackgroundColor="Transparent"
-                                   Text="{Binding Password}"
+                                   Text="{Binding PASSWORD}"
                                    Placeholder="Password"
                                    PlaceholderColor="Gray"
                                    IsPassword="True" />
@@ -60,6 +65,12 @@
                                    IsVisible="{Binding LoginCommand}"
                                    TextColor="Red" />-->
                             <Grid Padding="5" />
+                            <!--<Button BackgroundColor="#0099FF"
+                                    Grid.Row="2"
+                                    Text="Masuk"
+                                    CornerRadius="19"
+                                    Clicked="LoginToDashboard"
+                                    Command="{Binding LoginCommand}" />-->
                             <Button BackgroundColor="#0099FF"
                                     Grid.Row="2"
                                     Text="Masuk"

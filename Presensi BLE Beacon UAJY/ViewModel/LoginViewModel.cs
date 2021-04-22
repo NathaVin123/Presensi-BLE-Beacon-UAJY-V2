@@ -1,19 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Presensi_BLE_Beacon_UAJY.Helpers;
-using Presensi_BLE_Beacon_UAJY.Services;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using Xamarin.Forms;
+using Presensi_BLE_Beacon_UAJY.Models;
+using Presensi_BLE_Beacon_UAJY.Helpers;
+
 
 namespace Presensi_BLE_Beacon_UAJY.ViewModel
 {
     public class LoginViewModel
     {
-        private readonly APIService apiservice = new APIService();
-
         public string NPM { get; set; }
-        public string Password { get; set; }
+        public string PASSWORD { get; set; }
+
+        public LoginViewModel()
+        {
+            NPM = Settings.NPM;
+            PASSWORD = Settings.PASSWORD;
+        }
 
         public ICommand LoginCommand
         {
@@ -21,17 +23,18 @@ namespace Presensi_BLE_Beacon_UAJY.ViewModel
             {
                 return new Command(async () =>
                 {
-                    var accesstoken = await apiservice.LoginAsync(NPM, Password);
+                    var model = new LoginMahasiswaModel
+                    {
+                        NPM = NPM,
+                        PASSWORD = PASSWORD
+                    };
 
-                    Settings.AccessToken = accesstoken;
+                    // Authenticate user by calling LoginAsync service
+                    await App.AuthManager.LoginAsync(model);
+
+                    // If Token is returned after logging in, launch MasterDetailPage
                 });
             }
-        }
-
-        public LoginViewModel()
-        {
-            NPM = Settings.NPM;
-            Password = Settings.Password;
         }
     }
 }
